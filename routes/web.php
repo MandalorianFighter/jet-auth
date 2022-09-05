@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
 Route::middleware('admin:admin')->group(function () {
     Route::get('/admin/login', 'App\Http\Controllers\AdminController@loginForm');
     Route::post('/admin/login', 'App\Http\Controllers\AdminController@store')->name('admin.login');
